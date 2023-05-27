@@ -6,41 +6,31 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { FaBrain } from 'react-icons/fa';
 
 const Header = () => {
     return (
-        <Navbar className='navbar' collapseOnSelect expand="lg">
-            <Container>
-                <Link to='/'>
-                    <img src={require('../../images/learners.png')} alt='logo' width='150px' height='100px'></img>
+        <Navbar className='navbar' collapseOnSelect expand="lg" variant="dark">
+            <Container className=''>
+                <Link className='me-5' to='/'>
+                    <FaBrain className='text-white fs-1 me-3 ms-1'></FaBrain>
+                    <img src={require('../../images/learners.png')} alt='site-name' width='130px' height='60px'></img>
                 </Link>
 
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#features">Features</Nav.Link>
-                        <Nav.Link href="#pricing">Pricing</Nav.Link>
-                        <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">
-                                Another action
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">
-                                Separated link
-                            </NavDropdown.Item>
-                        </NavDropdown>
+                        <Link to='/home' className='me-3'>Home</Link>
+                        <Link to='/courses' className='me-3'>Courses</Link>
+                        <Link to='/faq' className='me-3'>FAQ</Link>
+                        <Link to='/blog' className='me-3'>Blog</Link>
                     </Nav>
                     <Nav>
-                        <Nav.Link href="#deets">More deets</Nav.Link>
-                        <Nav.Link eventKey={2} href="#memes">
-                            Dank memes
-                        </Nav.Link>
+                        <Link to='/profile' className='me-3'>Profile</Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
-        </Navbar>
+        </Navbar >
     );
 }
 
