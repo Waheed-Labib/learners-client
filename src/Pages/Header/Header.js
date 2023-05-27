@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Header.css';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { Image } from 'react-bootstrap';
+import { Button, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaBrain } from 'react-icons/fa';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 const Header = () => {
+
+    const { user } = useContext(AuthContext);
+
     return (
         <Navbar className='navbar' collapseOnSelect expand="lg" variant="dark">
             <Container className=''>
@@ -26,7 +30,24 @@ const Header = () => {
                         <Link to='/blog' className='me-3'>Blog</Link>
                     </Nav>
                     <Nav>
-                        <Link to='/profile' className='me-3'>Profile</Link>
+                        <Link to='/profile' className='me-3'>
+                            {
+
+                                user?.displayName ?
+                                    <div className='d-flex align-items-center'>
+                                        <p className='me-2'>{user.displayName}</p>
+                                        <Button>Log Out</Button>
+                                    </div>
+
+                                    :
+
+                                    <>
+                                        <Button className='me-2'>Login</Button>
+                                        <Button>Register</Button>
+                                    </>
+
+                            }
+                        </Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
