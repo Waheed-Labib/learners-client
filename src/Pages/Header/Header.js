@@ -5,7 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Button, Image, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { FaBrain, FaMoon, FaSun } from 'react-icons/fa';
+import { FaBrain, FaMoon, FaSun, FaUserAlt } from 'react-icons/fa';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Header = () => {
@@ -39,7 +39,7 @@ const Header = () => {
                     <Nav>
                         {
                             user ?
-                                <div className='d-flex justify-content-center'>
+                                <div className='d-flex justify-content-center mt-1'>
                                     <Button style={{ width: '100px' }} className='me-3 mt-2'>Log Out</Button>
                                     <OverlayTrigger
                                         key='bottom'
@@ -50,7 +50,13 @@ const Header = () => {
                                             </Tooltip>
                                         }
                                     >
-                                        <Image src={user.photoURL} height='50px' width='50px' roundedCircle></Image>
+                                        {
+                                            user.photoURL ?
+                                                <Image src={user.photoURL} height='50px' width='50px' roundedCircle></Image>
+                                                :
+                                                <FaUserAlt className='text-white fs-2 mt-2'></FaUserAlt>
+                                        }
+
                                     </OverlayTrigger>
 
                                 </div>
