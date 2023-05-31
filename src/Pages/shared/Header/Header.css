@@ -1,0 +1,19 @@
+.navbar {
+    background-color: #11009E;
+}
+
+.navbar a {
+    color: white;
+}
+
+.navbar a:hover {
+    color: yellow;
+}
+
+.theme-btn {
+    color: white;
+}
+
+.theme-btn:hover {
+    color: yellow;
+}

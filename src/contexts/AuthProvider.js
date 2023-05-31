@@ -1,13 +1,16 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import { getAuth } from 'firebase/auth'
 import app from '../firebase/firebase.config';
+import { getThemeFromLocalStorage } from '../utilities/getThemeFromLocalStorage';
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
 
-    const [theme, setTheme] = useState('light');
+    const themeInLS = getThemeFromLocalStorage();
+
+    const [theme, setTheme] = useState(themeInLS || 'light');
 
     const user = {
         displayName: 'Majhi Mia',

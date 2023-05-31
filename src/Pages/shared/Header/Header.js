@@ -6,32 +6,43 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Button, Image, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaBrain, FaMoon, FaSun, FaUserAlt } from 'react-icons/fa';
-import { AuthContext } from '../../contexts/AuthProvider';
+import { AuthContext } from '../../../contexts/AuthProvider';
+import { setThemeToLocalStorage } from '../../../utilities/setThemeToLocalStorage';
+
+
+
 
 const Header = () => {
 
     const { user, theme, setTheme } = useContext(AuthContext);
+
+
+    const toggleTheme = (theme) => {
+        setTheme(theme)
+        setThemeToLocalStorage(theme);
+    }
 
     return (
         <Navbar className='navbar' collapseOnSelect expand="lg" variant="dark">
             <Container className=''>
                 <Link className='me-5' to='/'>
                     <FaBrain className='text-white fs-1 me-3 ms-1'></FaBrain>
-                    <img src={require('../../images/learners.png')} alt='site-name' width='130px' height='60px'></img>
+                    <img src={require('../../../images/learners.png')} alt='site-name' width='130px' height='60px'></img>
                 </Link>
 
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <div className='text-white fs-5 mt-1 me-3 d-flex justify-content-center'>
+                        <div className='theme-btn fs-5 mt-1 me-3 d-flex justify-content-center'>
                             {
                                 theme === 'light' ?
-                                    <FaMoon onClick={() => setTheme('dark')} ></FaMoon>
+                                    <FaMoon onClick={() => toggleTheme('dark')} ></FaMoon>
                                     :
-                                    <FaSun onClick={() => setTheme('light')} ></FaSun>
+                                    <FaSun onClick={() => toggleTheme('light')} ></FaSun>
+
                             }
                         </div>
-                        <Link to='/home' className='me-3'>Home</Link>
+                        <Link to='/' className='me-3'>Home</Link>
                         <Link to='/courses' className='me-3'>Courses</Link>
                         <Link to='/faq' className='me-3'>FAQ</Link>
                         <Link to='/blog' className='me-3'>Blog</Link>
@@ -39,7 +50,7 @@ const Header = () => {
                     <Nav>
                         {
                             user ?
-                                <div className='d-flex justify-content-center mt-1'>
+                                <div className='d-flex justify-content-center mt-1 mb-1'>
                                     <Button style={{ width: '100px' }} className='me-3 mt-2'>Log Out</Button>
                                     <OverlayTrigger
                                         key='bottom'
@@ -64,8 +75,14 @@ const Header = () => {
                                 :
 
                                 <div className='d-flex justify-content-center'>
-                                    <Button style={{ width: '100px' }} className='me-2 mt-2'>Login</Button>
-                                    <Button style={{ width: '100px' }} className='mt-2'>Register</Button>
+                                    <Link to='/login'>
+                                        <Button style={{ width: '100px' }} className='me-2 mt-2'>Login</Button>
+                                    </Link>
+
+                                    <Link to='/register'>
+                                        <Button style={{ width: '100px' }} className='mt-2'>Register</Button>
+                                    </Link>
+
                                 </div>
                         }
                     </Nav>
