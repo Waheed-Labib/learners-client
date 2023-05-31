@@ -3,7 +3,7 @@ import './Header.css';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Button, Image, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Image, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaBrain, FaMoon, FaSun, FaUserAlt } from 'react-icons/fa';
 import { AuthContext } from '../../../contexts/AuthProvider';

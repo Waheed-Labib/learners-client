@@ -11,10 +11,12 @@ const Login = () => {
 
     const { theme, setUser, logIn, googleSignIn, githubSignIn } = useContext(AuthContext);
     const [error, setError] = useState('');
+    const [success, setSuccess] = useState(false);
 
     const handleLogIn = (event) => {
         event.preventDefault();
-
+        setError('');
+        setSuccess(false);
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
@@ -23,11 +25,14 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 setUser(user);
+                setSuccess(true);
                 // console.log(user);
                 form.reset();
-            }).catch(error => setError(error.message))
-    }
+            }).catch(error => {
+                setError(error.message)
+            })
 
+    }
     const handleLogInWithGoogle = () => {
         googleSignIn()
             .then(result => {
@@ -46,7 +51,13 @@ const Login = () => {
     return (
         <div className='my-5 w-75 mx-auto'>
             <FaBrain className={`fs-1 mb-3 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}></FaBrain>
-            < h3 className={`mb-3 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}>Please Login</h3>
+            {
+                success ?
+                    <h4 className='text-success mb-3'>Login Successful ! <br></br><small>Go to <Link to='/'>Home</Link></small></h4>
+                    :
+                    < h3 className={`mb-3 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}>Please Login</h3>
+            }
+
             {
                 error && <p className='w-100 text-danger border border-danger'>{error}</p>
             }
