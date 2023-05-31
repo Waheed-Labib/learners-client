@@ -9,15 +9,9 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
 
     const themeInLS = getThemeFromLocalStorage();
-
     const [theme, setTheme] = useState(themeInLS || 'light');
 
-    const user = {
-        displayName: 'Majhi Mia',
-        photoURL: 'https://th.bing.com/th/id/OIP.SG8jlsSnko3e4HymJwZv4wHaLL?pid=ImgDet&rs=1'
-    }
-
-    // const user = null;
+    const [user, setUser] = useState(null);
 
     const authInfo = {
         user,

@@ -51,7 +51,7 @@ const Header = () => {
                         {
                             user ?
                                 <div className='d-flex justify-content-center mt-1 mb-1'>
-                                    <Button style={{ width: '100px' }} className='me-3 mt-2'>Log Out</Button>
+                                    <button style={{ width: '100px' }} className='me-3 mt-2 header-btn rounded'>Log Out</button>
                                     <OverlayTrigger
                                         key='bottom'
                                         placement='bottom'
@@ -63,7 +63,7 @@ const Header = () => {
                                     >
                                         {
                                             user.photoURL ?
-                                                <Image src={user.photoURL} height='50px' width='50px' roundedCircle></Image>
+                                                <Image src={user.photoURL} height='45px' width='45px' roundedCircle></Image>
                                                 :
                                                 <FaUserAlt className='text-white fs-2 mt-2'></FaUserAlt>
                                         }
@@ -76,11 +76,11 @@ const Header = () => {
 
                                 <div className='d-flex justify-content-center'>
                                     <Link to='/login'>
-                                        <Button style={{ width: '100px' }} className='me-2 mt-2'>Login</Button>
+                                        <button style={{ width: '100px' }} className='me-2 mt-2 header-btn rounded py-2'>Login</button>
                                     </Link>
 
                                     <Link to='/register'>
-                                        <Button style={{ width: '100px' }} className='mt-2'>Register</Button>
+                                        <button style={{ width: '100px' }} className='mt-2 header-btn rounded py-2'>Register</button>
                                     </Link>
 
                                 </div>

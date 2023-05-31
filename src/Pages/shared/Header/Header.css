@@ -17,3 +17,14 @@
 .theme-btn:hover {
     color: yellow;
 }
+
+.header-btn {
+    background-color: rgb(59, 59, 199);
+    color: aliceblue;
+    border: none;
+}
+
+.header-btn:hover {
+    /* background-color: rgb(37, 37, 224); */
+    color: yellow;
+}
