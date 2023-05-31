@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import { FaBrain, FaGithub, FaGoogle } from 'react-icons/fa';
 import './Login.css'
@@ -10,26 +10,31 @@ import { AuthContext } from '../../contexts/AuthProvider';
 const Login = () => {
 
     const { theme, setUser, googleSignIn, githubSignIn } = useContext(AuthContext);
+    const [error, setError] = useState('');
 
     const handleLogInWithGoogle = () => {
         googleSignIn()
             .then(result => {
                 const user = result.user;
                 setUser(user)
-            }).catch(error => console.error(error))
+            }).catch(error => setError(error.message))
     }
     const handleLogInWithGithub = () => {
         githubSignIn()
             .then(result => {
                 const user = result.user;
                 setUser(user)
-            }).catch(error => console.error(error))
+            }).catch(error => setError(error.message))
     }
 
     return (
         <div className='my-5 w-75 mx-auto'>
             <FaBrain className={`fs-1 mb-3 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}></FaBrain>
             < h3 className={`mb-3 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}>Please Login</h3>
+            {
+                error && <p className='w-100 text-danger border border-danger'>{error}</p>
+            }
+
             <Form>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">

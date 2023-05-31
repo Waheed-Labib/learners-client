@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { AuthContext } from '../../contexts/AuthProvider';
@@ -11,13 +11,14 @@ import { Link } from 'react-router-dom';
 const Register = () => {
 
     const { theme, setUser, googleSignIn, githubSignIn } = useContext(AuthContext);
+    const [error, setError] = useState('');
 
     const handleLogInWithGoogle = () => {
         googleSignIn()
             .then(result => {
                 const user = result.user;
                 setUser(user)
-            }).catch(error => console.error(error))
+            }).catch(error => setError(error.message))
     }
 
     const handleLogInWithGithub = () => {
@@ -25,13 +26,17 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 setUser(user)
-            }).catch(error => console.error(error))
+            }).catch(error => setError(error.message))
     }
 
     return (
         <div className='my-5 w-75 mx-auto'>
             <FaBrain className={`fs-1 mb-3 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}></FaBrain>
             <h3 className={`mb-3 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}>Please Register</h3>
+            {
+                error && <p className='w-100 text-danger border border-danger'>{error}</p>
+            }
+
             <Form>
                 <Form.Group className='mb-3' controlId="formBasicName">
                     {/* <Form.Label>Your Name</Form.Label> */}
