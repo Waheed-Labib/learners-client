@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { GoogleAuthProvider, getAuth, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth'
+import { GithubAuthProvider, GoogleAuthProvider, getAuth, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth'
 import app from '../firebase/firebase.config';
 import { getThemeFromLocalStorage } from '../utilities/getThemeFromLocalStorage';
 
@@ -17,6 +17,11 @@ const AuthProvider = ({ children }) => {
 
     const googleSignIn = () => {
         return signInWithPopup(auth, googleProvider)
+    }
+    const githubProvider = new GithubAuthProvider();
+
+    const githubSignIn = () => {
+        return signInWithPopup(auth, githubProvider)
     }
 
     const logOut = () => {
@@ -37,6 +42,7 @@ const AuthProvider = ({ children }) => {
         theme,
         setTheme,
         googleSignIn,
+        githubSignIn,
         logOut
     }
 

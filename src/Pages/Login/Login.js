@@ -9,10 +9,17 @@ import { AuthContext } from '../../contexts/AuthProvider';
 
 const Login = () => {
 
-    const { theme, setUser, googleSignIn } = useContext(AuthContext);
+    const { theme, setUser, googleSignIn, githubSignIn } = useContext(AuthContext);
 
     const handleLogInWithGoogle = () => {
         googleSignIn()
+            .then(result => {
+                const user = result.user;
+                setUser(user)
+            }).catch(error => console.error(error))
+    }
+    const handleLogInWithGithub = () => {
+        githubSignIn()
             .then(result => {
                 const user = result.user;
                 setUser(user)
@@ -52,7 +59,7 @@ const Login = () => {
                     <FaGoogle></FaGoogle> Login with Google
                 </button>
 
-                <button className={`mb-5 px-3 py-2 w-100 mt-2 rounded ${theme === 'dark' ? 'primary-btn' : 'white-btn'}`} type="submit">
+                <button onClick={handleLogInWithGithub} className={`mb-5 px-3 py-2 w-100 mt-2 rounded ${theme === 'dark' ? 'primary-btn' : 'white-btn'}`} type="submit">
                     <FaGithub></FaGithub> Login with Github
                 </button>
             </div>
