@@ -9,8 +9,24 @@ import { AuthContext } from '../../contexts/AuthProvider';
 
 const Login = () => {
 
-    const { theme, setUser, googleSignIn, githubSignIn } = useContext(AuthContext);
+    const { theme, setUser, logIn, googleSignIn, githubSignIn } = useContext(AuthContext);
     const [error, setError] = useState('');
+
+    const handleLogIn = (event) => {
+        event.preventDefault();
+
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        logIn(email, password)
+            .then(result => {
+                const user = result.user;
+                setUser(user);
+                // console.log(user);
+                form.reset();
+            }).catch(error => setError(error.message))
+    }
 
     const handleLogInWithGoogle = () => {
         googleSignIn()
@@ -35,16 +51,16 @@ const Login = () => {
                 error && <p className='w-100 text-danger border border-danger'>{error}</p>
             }
 
-            <Form>
+            <Form onSubmit={handleLogIn}>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     {/* <Form.Label>Email address</Form.Label> */}
-                    <Form.Control type="email" placeholder="Enter email" />
+                    <Form.Control name='email' type="email" placeholder="Enter email" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     {/* <Form.Label>Password</Form.Label> */}
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Control name='password' type="password" placeholder="Password" />
                 </Form.Group>
 
                 <p className={`text-end ${theme === 'dark' ? 'text-white' : ''}`}><small><Link>forgotten password?</Link></small></p>

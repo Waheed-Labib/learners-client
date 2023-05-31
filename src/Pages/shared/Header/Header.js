@@ -59,7 +59,7 @@ const Header = () => {
                         {
                             user ?
                                 <div className='d-flex justify-content-center mt-1 mb-1'>
-                                    <button onClick={handleLogOut} style={{ width: '100px' }} className='me-3 mt-2 header-btn rounded'>Log Out</button>
+                                    <button onClick={handleLogOut} style={{ width: '100px' }} className='me-3 mt-2 py-1 header-btn rounded'>Log Out</button>
                                     <OverlayTrigger
                                         key='bottom'
                                         placement='bottom'

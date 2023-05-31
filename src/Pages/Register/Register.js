@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { AuthContext } from '../../contexts/AuthProvider';
 import './Register.css'
@@ -10,8 +9,30 @@ import { Link } from 'react-router-dom';
 
 const Register = () => {
 
-    const { theme, setUser, googleSignIn, githubSignIn } = useContext(AuthContext);
+    const { theme, setUser, createUser, googleSignIn, githubSignIn } = useContext(AuthContext);
     const [error, setError] = useState('');
+    const [success, setSuccess] = useState(false);
+
+    const handleRegister = event => {
+        event.preventDefault();
+        setError('');
+        setSuccess(false);
+        const form = event.target;
+        const name = form.name.value;
+        const photoURL = form.photoURL.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const confirm = form.confirm.value;
+
+        createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                setUser(user);
+                console.log(user);
+                form.reset();
+                setSuccess(true);
+            }).catch(error => setError(error.message))
+    }
 
     const handleLogInWithGoogle = () => {
         googleSignIn()
@@ -37,32 +58,34 @@ const Register = () => {
                 error && <p className='w-100 text-danger border border-danger'>{error}</p>
             }
 
-            <Form>
+            <Form onSubmit={handleRegister}>
                 <Form.Group className='mb-3' controlId="formBasicName">
                     {/* <Form.Label>Your Name</Form.Label> */}
-                    <Form.Control type="text" placeholder="Full Name" />
+                    <Form.Control name='name' type="text" placeholder="Full Name" required />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPhotoURL">
                     {/* <Form.Label>photo URL</Form.Label> */}
-                    <Form.Control type="text" placeholder="photoURL" />
+                    <Form.Control name='photoURL' type="text" placeholder="photoURL (optional)" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     {/* <Form.Label>Email address</Form.Label> */}
-                    <Form.Control type="email" placeholder="Enter email" />
+                    <Form.Control name='email' type="email" placeholder="Enter email" required />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     {/* <Form.Label>Password</Form.Label> */}
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Control name='password' type="password" placeholder="Password" required />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
                     {/* <Form.Label>Password</Form.Label> */}
-                    <Form.Control type="password" placeholder="Confirm Password" />
+                    <Form.Control name='confirm' type="password" placeholder="Confirm Password" required />
                 </Form.Group>
-
+                {
+                    success && <p className='mx-auto mt-2 rounded bg-success text-white py-1 w-50'>User Created Successfully !</p>
+                }
                 <button className='mb-2 px-3 py-2 w-100 mt-2 rounded primary-btn' type="submit">
                     Register
                 </button>

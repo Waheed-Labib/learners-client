@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { GithubAuthProvider, GoogleAuthProvider, getAuth, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth'
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
 import app from '../firebase/firebase.config';
 import { getThemeFromLocalStorage } from '../utilities/getThemeFromLocalStorage';
 
@@ -12,6 +12,14 @@ const AuthProvider = ({ children }) => {
     const [theme, setTheme] = useState(themeInLS || 'light');
 
     const [user, setUser] = useState(null);
+
+    const createUser = (email, password) => {
+        return createUserWithEmailAndPassword(auth, email, password)
+    }
+
+    const logIn = (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password)
+    }
 
     const googleProvider = new GoogleAuthProvider();
 
@@ -37,10 +45,12 @@ const AuthProvider = ({ children }) => {
     }, [])
 
     const authInfo = {
-        user,
-        setUser,
         theme,
         setTheme,
+        user,
+        setUser,
+        createUser,
+        logIn,
         googleSignIn,
         githubSignIn,
         logOut
