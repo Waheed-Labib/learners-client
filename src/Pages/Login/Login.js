@@ -9,7 +9,15 @@ import { AuthContext } from '../../contexts/AuthProvider';
 
 const Login = () => {
 
-    const { theme } = useContext(AuthContext);
+    const { theme, setUser, googleSignIn } = useContext(AuthContext);
+
+    const handleLogInWithGoogle = () => {
+        googleSignIn()
+            .then(result => {
+                const user = result.user;
+                setUser(user)
+            }).catch(error => console.error(error))
+    }
 
     return (
         <div className='my-5 w-75 mx-auto'>
@@ -40,7 +48,7 @@ const Login = () => {
             </div>
 
             <div className='d-flex flex-column align-items-center mb-5'>
-                <button className={`mb-2 px-3 py-2 w-100 mt-2 rounded ${theme === 'dark' ? 'primary-btn' : 'white-btn'}`} type="submit">
+                <button onClick={handleLogInWithGoogle} className={`mb-2 px-3 py-2 w-100 mt-2 rounded ${theme === 'dark' ? 'primary-btn' : 'white-btn'}`} type="submit">
                     <FaGoogle></FaGoogle> Login with Google
                 </button>
 
