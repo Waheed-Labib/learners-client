@@ -14,12 +14,20 @@ import { setThemeToLocalStorage } from '../../../utilities/setThemeToLocalStorag
 
 const Header = () => {
 
-    const { user, theme, setTheme } = useContext(AuthContext);
+    const { user, theme, setTheme, logOut } = useContext(AuthContext);
 
 
     const toggleTheme = (theme) => {
         setTheme(theme)
         setThemeToLocalStorage(theme);
+    }
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                console.log('Log Out Successfull')
+            })
+            .catch(error => console.error(error))
     }
 
     return (
@@ -51,7 +59,7 @@ const Header = () => {
                         {
                             user ?
                                 <div className='d-flex justify-content-center mt-1 mb-1'>
-                                    <button style={{ width: '100px' }} className='me-3 mt-2 header-btn rounded'>Log Out</button>
+                                    <button onClick={handleLogOut} style={{ width: '100px' }} className='me-3 mt-2 header-btn rounded'>Log Out</button>
                                     <OverlayTrigger
                                         key='bottom'
                                         placement='bottom'

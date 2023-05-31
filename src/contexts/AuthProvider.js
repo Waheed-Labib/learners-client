@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth'
+import { GoogleAuthProvider, getAuth, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth'
 import app from '../firebase/firebase.config';
 import { getThemeFromLocalStorage } from '../utilities/getThemeFromLocalStorage';
 
@@ -19,12 +19,25 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, googleProvider)
     }
 
+    const logOut = () => {
+        return signOut(auth)
+    }
+
+    useEffect(() => {
+        const unSubscribe = onAuthStateChanged(auth, currentUser => {
+            setUser(currentUser)
+        })
+
+        return () => unSubscribe()
+    }, [])
+
     const authInfo = {
         user,
         setUser,
         theme,
         setTheme,
-        googleSignIn
+        googleSignIn,
+        logOut
     }
 
     return (
