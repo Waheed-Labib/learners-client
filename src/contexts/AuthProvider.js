@@ -10,6 +10,7 @@ const AuthProvider = ({ children }) => {
 
     const themeInLS = getThemeFromLocalStorage();
     const [theme, setTheme] = useState(themeInLS || 'light');
+    const [loading, setLoading] = useState(true);
 
     const [user, setUser] = useState(null);
 
@@ -43,6 +44,7 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
+            setLoading(false);
         })
 
         return () => unSubscribe()
@@ -53,6 +55,7 @@ const AuthProvider = ({ children }) => {
         setTheme,
         user,
         setUser,
+        loading,
         createUser,
         updateUserProfile,
         logIn,

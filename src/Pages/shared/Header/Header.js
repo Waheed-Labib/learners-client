@@ -60,23 +60,29 @@ const Header = () => {
                             user ?
                                 <div className='d-flex justify-content-center mt-1 mb-1'>
                                     <button onClick={handleLogOut} style={{ width: '100px' }} className='me-3 mt-2 py-1 header-btn rounded'>Log Out</button>
-                                    <OverlayTrigger
-                                        key='bottom'
-                                        placement='bottom'
-                                        overlay={
-                                            <Tooltip id={'tooltip-bottom'}>
-                                                {user.displayName}
-                                            </Tooltip>
-                                        }
-                                    >
-                                        {
-                                            user.photoURL ?
-                                                <Image src={user.photoURL} height='45px' width='45px' roundedCircle></Image>
-                                                :
-                                                <FaUserAlt className='text-white fs-2 mt-2'></FaUserAlt>
-                                        }
+                                    <Link to={`/user-info/${user.uid}`}>
+                                        <OverlayTrigger
+                                            key='bottom'
+                                            placement='bottom'
+                                            overlay={
+                                                <Tooltip id={'tooltip-bottom'}>
+                                                    {user.displayName}
+                                                </Tooltip>
+                                            }
+                                        >
 
-                                    </OverlayTrigger>
+                                            {
+                                                user.photoURL ?
+                                                    <Image src={user.photoURL} height='45px' width='45px' roundedCircle></Image>
+                                                    :
+                                                    <FaUserAlt className='text-white fs-2 mt-2'></FaUserAlt>
+                                            }
+
+
+
+                                        </OverlayTrigger>
+                                    </Link>
+
 
                                 </div>
 

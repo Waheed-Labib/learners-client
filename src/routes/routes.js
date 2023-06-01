@@ -3,10 +3,11 @@ import Blog from "../Pages/Blog/Blog";
 import Courses from "../Pages/Courses/Courses";
 import FAQ from "../Pages/FAQ/FAQ";
 import Home from "../Pages/Home/Home";
-import Profile from "../Pages/Profile/Profile";
 import Main from "../layout/Main";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
+import UserInfo from "../Pages/UserInfo/UserInfo";
+import PrivateRoute from "./PrivateRoute";
 
 export const routes = createBrowserRouter([
     {
@@ -30,8 +31,8 @@ export const routes = createBrowserRouter([
                 element: <Blog></Blog>
             },
             {
-                path: '/profile/:id',
-                element: <Profile></Profile>
+                path: '/user-info/:id',
+                element: <PrivateRoute><UserInfo></UserInfo></PrivateRoute>
             },
             {
                 path: '/login',

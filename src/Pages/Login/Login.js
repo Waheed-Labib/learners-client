@@ -2,16 +2,19 @@ import React, { useContext, useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import { FaBrain, FaGithub, FaGoogle } from 'react-icons/fa';
 import './Login.css'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 
 
 const Login = () => {
 
-    const { theme, setUser, logIn, googleSignIn, githubSignIn } = useContext(AuthContext);
+    const { theme, user, setUser, logIn, googleSignIn, githubSignIn } = useContext(AuthContext);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState(false);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/'
 
     const handleLogIn = (event) => {
         event.preventDefault();
@@ -28,6 +31,7 @@ const Login = () => {
                 setSuccess(true);
                 // console.log(user);
                 form.reset();
+                navigate(from, { replace: true })
             }).catch(error => {
                 setError(error.message)
             })
@@ -53,7 +57,7 @@ const Login = () => {
             <FaBrain className={`fs-1 mb-3 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}></FaBrain>
             {
                 success ?
-                    <h4 className='text-success mb-3'>Login Successful ! <br></br><small>Go to <Link to='/'>Home</Link></small></h4>
+                    <h4 className='text-success mb-3'>Login Successful ! <br></br><small><Link to={`/profile/${user.uid}`}>visit profile</Link></small></h4>
                     :
                     < h3 className={`mb-3 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}>Please Login</h3>
             }
