@@ -4,12 +4,13 @@ import { AuthContext } from '../../contexts/AuthProvider';
 import './Register.css'
 import { FaBrain, FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 
 
 
 const Register = () => {
 
-    const { theme, setUser, createUser, updateUserProfile, googleSignIn, githubSignIn } = useContext(AuthContext);
+    const { theme, user, setUser, createUser, updateUserProfile, googleSignIn, githubSignIn, verifyEmail } = useContext(AuthContext);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState(false);
 
@@ -46,6 +47,8 @@ const Register = () => {
                 console.log(user);
                 form.reset();
                 setSuccess(true);
+                handleEmailVerification()
+                toast.success('Please verify your email address')
             }).catch(error => {
                 setError(error.message)
             })
@@ -67,12 +70,19 @@ const Register = () => {
             }).catch(error => setError(error.message))
     }
 
+    const handleEmailVerification = () => {
+        verifyEmail()
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
+
+
     return (
         <div className='my-5 w-75 mx-auto'>
             <FaBrain className={`fs-1 mb-3 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}></FaBrain>
             {
                 success ?
-                    <h4 className='text-success mb-3'>Account Creation Successful ! <br></br><small>Go to <Link to='/'>Home</Link></small></h4>
+                    <h4 className='text-success mb-3'>Account Creation Successful ! <br></br><small><Link to='/'>return home</Link></small></h4>
                     :
                     <h3 className={`mb-3 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}>Please Register</h3>
             }

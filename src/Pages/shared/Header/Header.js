@@ -66,7 +66,7 @@ const Header = () => {
                                             placement='bottom'
                                             overlay={
                                                 <Tooltip id={'tooltip-bottom'}>
-                                                    {user.displayName}
+                                                    {user.displayName}<br></br>view profile
                                                 </Tooltip>
                                             }
                                         >

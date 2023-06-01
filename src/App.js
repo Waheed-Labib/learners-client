@@ -4,7 +4,7 @@ import { routes } from './routes/routes';
 import { useContext } from 'react';
 import { AuthContext } from './contexts/AuthProvider';
 import { Spinner } from 'react-bootstrap';
-
+import { Toaster } from 'react-hot-toast';
 
 
 
@@ -22,6 +22,7 @@ function App() {
   return (
     <div className={`App ${theme === 'dark' ? 'bg-dark text-white' : ''}`}>
       <RouterProvider router={routes}></RouterProvider>
+      <Toaster></Toaster>
     </div>
 
   );

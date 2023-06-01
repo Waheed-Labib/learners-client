@@ -4,14 +4,16 @@ import { FaBrain, FaGithub, FaGoogle } from 'react-icons/fa';
 import './Login.css'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
-
+import toast from 'react-hot-toast';
 
 
 const Login = () => {
 
-    const { theme, user, setUser, logIn, googleSignIn, githubSignIn } = useContext(AuthContext);
+    const { theme, user, setUser, logIn, googleSignIn, githubSignIn, resetPassword, setLoading } = useContext(AuthContext);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState(false);
+    const [email, setEmail] = useState('');
+
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/'
@@ -31,10 +33,13 @@ const Login = () => {
                 setSuccess(true);
                 // console.log(user);
                 form.reset();
-                navigate(from, { replace: true })
+
+                if (user.emailVerified) navigate(from, { replace: true })
+                else toast.error("You have not verified your email. Please check your email.")
+
             }).catch(error => {
                 setError(error.message)
-            })
+            }).finally(setLoading(false))
 
     }
     const handleLogInWithGoogle = () => {
@@ -52,12 +57,32 @@ const Login = () => {
             }).catch(error => setError(error.message))
     }
 
+    const handleEmailBlur = event => {
+        setEmail(event.target.value);
+    }
+
+    const handleForgottenPassword = () => {
+        setError('')
+
+        if (!email) {
+            setError('Please insert your Email')
+            return
+        }
+        resetPassword(email)
+            .then(() => {
+                toast.success('Password reset email sent. Please check your email.')
+            }).catch(error => {
+                console.error(error.message)
+                setError(error.message)
+            })
+    }
+
     return (
         <div className='my-5 w-75 mx-auto'>
             <FaBrain className={`fs-1 mb-3 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}></FaBrain>
             {
                 success ?
-                    <h4 className='text-success mb-3'>Login Successful ! <br></br><small><Link to={`/profile/${user.uid}`}>visit profile</Link></small></h4>
+                    <h4 className='text-success mb-3'>Login Successful !</h4>
                     :
                     < h3 className={`mb-3 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}>Please Login</h3>
             }
@@ -70,7 +95,7 @@ const Login = () => {
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     {/* <Form.Label>Email address</Form.Label> */}
-                    <Form.Control name='email' type="email" placeholder="Enter email" />
+                    <Form.Control onBlur={handleEmailBlur} name='email' type="email" placeholder="Enter email" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -78,7 +103,7 @@ const Login = () => {
                     <Form.Control name='password' type="password" placeholder="Password" />
                 </Form.Group>
 
-                <p className={`text-end ${theme === 'dark' ? 'text-white' : ''}`}><small><Link>forgotten password?</Link></small></p>
+                <p onClick={handleForgottenPassword} className={`text-end ${theme === 'dark' ? 'text-white' : ''}`}><small><Link>forgotten password?</Link></small></p>
                 <button className='mb-2 px-3 py-2 w-100 mt-2 rounded primary-btn' type="submit">
                     Login
                 </button>
