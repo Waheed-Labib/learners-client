@@ -8,6 +8,7 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import UserInfo from "../Pages/UserInfo/UserInfo";
 import PrivateRoute from "./PrivateRoute";
+import VerifyReq from "../Pages/VerifyReq/VerifyReq";
 
 export const routes = createBrowserRouter([
     {
@@ -20,7 +21,9 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/courses',
-                element: <Courses></Courses>
+                element: <Courses></Courses>,
+                loader: () => fetch('https://learners-server-side.vercel.app/courses')
+
             },
             {
                 path: '/faq',
@@ -41,6 +44,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/verify-request',
+                element: <VerifyReq></VerifyReq>
             }
         ]
     }

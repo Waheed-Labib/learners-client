@@ -1,25 +1,55 @@
 import React, { useContext } from 'react';
 import Card from 'react-bootstrap/Card';
 import { AuthContext } from '../../contexts/AuthProvider';
-import './Course.css'
+import './Course.css';
+import { FaStar } from 'react-icons/fa';
 
-const Course = () => {
+
+const Course = ({ course }) => {
 
     const { theme } = useContext(AuthContext);
+    const { id, image, course_name, teachers, rating, credits, price } = course;
 
     return (
-        <Card style={{ width: '18rem' }} className={`mx-auto my-5 ${theme === 'dark' ? 'bg-dark light-shadow border-light' : 'bg-light dark-shadow border-dark'}`}>
-            <Card.Img variant="top" src='https://th.bing.com/th/id/OIP.CloeOwVYEYxa7X5u_qBQ9AHaEo?pid=ImgDet&rs=1' />
+        <Card className={`mx-auto my-5 ${theme === 'dark' ? 'bg-dark light-shadow border-light' : 'bg-light dark-shadow border-dark'}`}>
+            <Card.Img variant="top" src={image} height='200px' />
             <Card.Body className='text-start'>
-                <Card.Title className={`${theme === 'dark' ? 'text-white' : 'primary-color'}`}>Machine Learning</Card.Title>
-                <Card.Text>
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
-                </Card.Text>
-                <button className={`${theme === 'dark' ? 'btn btn-outline-light' : 'btn btn-outline-dark'} me-2 p-2 rounded`}>View Details</button>
-                <button className='btn btn-outline-primary p-2 rounded fw-semibold'>Add to List</button>
+                <Card.Title>
+                    <h4 className={`mb-0 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}>{course_name}</h4>
+                    <small className={`${theme === 'dark' ? 'text-secondary' : ''}`}>by {
+                        teachers.map(teacher => {
+                            if (teachers.indexOf(teacher) === teachers.length - 1)
+                                return < span key={teacher} className={`${theme === 'dark' ? 'lightblue' : 'text-secondary'}`}> {teacher}</span>
+
+                            else return < span key={teacher} className={`${theme === 'dark' ? 'lightblue' : 'text-secondary'}`} > {teacher}, </span>
+                        })
+                    } </small>
+                </Card.Title>
+
+                <div className='d-flex justify-content-between align-items-center mb-0 mt-4'>
+                    <p>
+                        <FaStar className='text-warning'></FaStar>
+                        <span> {rating}</span>
+                    </p>
+
+                    <p>
+                        <span className='text-danger'>{credits}</span> credits
+                    </p>
+
+                    <h3>
+                        {price} ৳
+                    </h3>
+
+
+                </div>
+
+                <div>
+                    <button className={`${theme === 'dark' ? 'btn btn-outline-light' : 'btn btn-outline-dark'} me-2 p-2 rounded`}>View Details</button>
+                    <button className='btn btn-outline-primary p-2 rounded fw-semibold'>Add to List</button>
+                </div>
+
             </Card.Body>
-        </Card>
+        </Card >
     );
 }
 

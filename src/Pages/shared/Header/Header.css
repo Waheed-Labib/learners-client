@@ -10,11 +10,16 @@
     color: yellow;
 }
 
-.theme-btn {
-    color: white;
+.sun-btn {
+    color: rgb(255, 180, 5)
 }
 
-.theme-btn:hover {
+.moon-btn {
+    color: lightcyan;
+}
+
+.sun-btn:hover,
+.moon-btn:hover {
     color: yellow;
 }
 
@@ -27,4 +32,8 @@
 .header-btn:hover {
     /* background-color: rgb(37, 37, 224); */
     color: yellow;
+}
+
+.lightblue {
+    color: lightblue;
 }

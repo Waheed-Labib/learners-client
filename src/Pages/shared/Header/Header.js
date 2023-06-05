@@ -38,22 +38,30 @@ const Header = () => {
                     <img src={require('../../../images/learners.png')} alt='site-name' width='130px' height='60px'></img>
                 </Link>
 
+
+                <div className='fs-5 me-5 d-flex justify-content-center'>
+                    {
+                        theme === 'light' ?
+                            <FaMoon className='moon-btn' onClick={() => toggleTheme('dark')} ></FaMoon>
+                            :
+                            <FaSun className='sun-btn' onClick={() => toggleTheme('light')} ></FaSun>
+
+                    }
+                </div>
+
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <div className='theme-btn fs-5 mt-1 me-3 d-flex justify-content-center'>
-                            {
-                                theme === 'light' ?
-                                    <FaMoon onClick={() => toggleTheme('dark')} ></FaMoon>
-                                    :
-                                    <FaSun onClick={() => toggleTheme('light')} ></FaSun>
 
-                            }
-                        </div>
+                        <hr className='lightblue'></hr>
                         <Link to='/' className='me-3'>Home</Link>
+                        <hr className='lightblue'></hr>
                         <Link to='/courses' className='me-3'>Courses</Link>
+                        <hr className='lightblue'></hr>
                         <Link to='/faq' className='me-3'>FAQ</Link>
+                        <hr className='lightblue'></hr>
                         <Link to='/blog' className='me-3'>Blog</Link>
+                        <hr className='lightblue'></hr>
                     </Nav>
                     <Nav>
                         {

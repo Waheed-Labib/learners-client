@@ -47,6 +47,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 setUser(user)
+                // console.log(user)
             }).catch(error => setError(error.message))
     }
     const handleLogInWithGithub = () => {
@@ -81,8 +82,8 @@ const Login = () => {
         <div className='my-5 w-75 mx-auto'>
             <FaBrain className={`fs-1 mb-3 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}></FaBrain>
             {
-                success ?
-                    <h4 className='text-success mb-3'>Login Successful !</h4>
+                success && user ?
+                    <h4 className='text-success mb-3'>Login Successful. Please verify your Email first. Then visit the site.</h4>
                     :
                     < h3 className={`mb-3 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}>Please Login</h3>
             }
