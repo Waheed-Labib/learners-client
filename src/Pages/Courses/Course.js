@@ -16,7 +16,9 @@ const Course = ({ course }) => {
             <Card.Img variant="top" src={image} height='200px' />
             <Card.Body className='text-start'>
                 <Card.Title>
-                    <h4 className={`mb-0 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}>{course_name}</h4>
+                    <Link style={{ textDecoration: 'none' }} to={`/course-details/${id}`}>
+                        <h4 className={`mb-0 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}>{course_name}</h4>
+                    </Link>
                     <small className={`${theme === 'dark' ? 'text-secondary' : ''}`}>by {
                         teachers.map(teacher => {
                             if (teachers.indexOf(teacher) === teachers.length - 1)
