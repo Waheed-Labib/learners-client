@@ -6,7 +6,7 @@ const Quotes = () => {
     const [quotes, setQuotes] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/quotations')
+        fetch('https://learners-server-side.vercel.app/quotations')
             .then(res => res.json())
             .then(data => setQuotes(data))
     }, [])
@@ -17,7 +17,7 @@ const Quotes = () => {
                 quotes.map(quote => <div className='mb-5'>
                     <Image height={'100px'} width={'100px'} src={quote.image} roundedCircle></Image>
                     <h5 className='mt-2'>{quote.student_name}</h5>
-                    <p><small>{quote.location}</small></p>
+                    <p className=''><small>{quote.location}</small></p>
                     <hr className='mx-auto w-25'></hr>
                     <p>"{quote.quote}"</p>
                 </div>)

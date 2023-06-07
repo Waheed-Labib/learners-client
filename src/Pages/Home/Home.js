@@ -1,10 +1,11 @@
 import React from 'react';
+import { FaBrain } from 'react-icons/fa';
 
 
 const Home = () => {
     return (
         <div>
-            This is home
+
         </div>
     );
 };

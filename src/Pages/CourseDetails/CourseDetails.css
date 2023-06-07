@@ -1,0 +1,19 @@
+.rating {
+    justify-content: center;
+}
+
+@media screen and (min-width:768px) {
+    .rating {
+        justify-content: start;
+    }
+}
+
+.get-premium-btn {
+    justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+    .get-premium-btn {
+        justify-content: start;
+    }
+}
