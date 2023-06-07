@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Card from 'react-bootstrap/Card';
-import { AuthContext } from '../../contexts/AuthProvider';
+import { AuthContext } from '../../../contexts/AuthProvider';
 import './Course.css';
 import { FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
