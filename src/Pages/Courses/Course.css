@@ -1,0 +1,8 @@
+.light-shadow {
+
+    box-shadow: 10px 10px rgba(240, 248, 255, 0.101);
+}
+
+.dark-shadow {
+    box-shadow: 10px 10px #10009e38;
+}
