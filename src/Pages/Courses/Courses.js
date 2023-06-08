@@ -5,8 +5,10 @@ import { AuthContext } from '../../contexts/AuthProvider';
 import { useLoaderData } from 'react-router-dom';
 import { Col, Row } from 'react-bootstrap';
 import './Courses.css'
-import InstructorList from './InstructorList';
 import Quotes from '../shared/Quotes/Quotes';
+import Instructors from '../shared/Instructors/Instructors';
+
+
 
 const Courses = () => {
     const { theme } = useContext(AuthContext);
@@ -34,9 +36,9 @@ const Courses = () => {
 
             </Col>
 
-            {/* Show Instructor List */}
+            {/* Right Side Bar */}
             <Col className='mb-5 rounded px-5'>
-                <InstructorList></InstructorList>
+                <Instructors></Instructors>
                 <Quotes></Quotes>
             </Col>
         </Row >

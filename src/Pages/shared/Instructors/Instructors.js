@@ -1,11 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Image } from 'react-bootstrap';
-import './Courses.css'
-import { AuthContext } from '../../contexts/AuthProvider';
+import { AuthContext } from '../../../contexts/AuthProvider';
 import { FaBrain } from 'react-icons/fa';
 
-const InstructorList = () => {
+const Instructors = () => {
 
     const { theme } = useContext(AuthContext);
 
@@ -17,7 +16,7 @@ const InstructorList = () => {
     }, [])
 
     return (
-        <div className=''>
+        <div>
             <FaBrain className={`fs-1 mt-5 mb-3 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}></FaBrain>
             < h3 className={`mb-5 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}>Our Instructors</h3>
 
@@ -30,8 +29,7 @@ const InstructorList = () => {
                 </Link>)
             }
         </div>
-
     );
 };
 
-export default InstructorList;
+export default Instructors;
