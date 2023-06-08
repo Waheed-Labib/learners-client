@@ -10,6 +10,7 @@ import UserInfo from "../Pages/UserInfo/UserInfo";
 import PrivateRoute from "./PrivateRoute";
 import VerifyReq from "../Pages/VerifyReq/VerifyReq";
 import CourseDetails from "../Pages/CourseDetails/CourseDetails";
+import Instructor from "../Pages/Instructor/Instructor";
 
 export const routes = createBrowserRouter([
     {
@@ -54,6 +55,11 @@ export const routes = createBrowserRouter([
                 path: '/course-details/:id',
                 element: <CourseDetails></CourseDetails>,
                 loader: ({ params }) => fetch(`https://learners-server-side.vercel.app/courses/${params.id}`)
+            },
+            {
+                path: '/instructor/:id',
+                element: <Instructor></Instructor>,
+                loader: ({ params }) => fetch(`https://learners-server-side.vercel.app/instructors/${params.id}`)
             }
         ]
     }

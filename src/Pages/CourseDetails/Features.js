@@ -5,7 +5,7 @@ import { FaCheck } from 'react-icons/fa';
 const Features = ({ course }) => {
     return (
         <div className='border border-secondary rounded mt-5'>
-            <h4 className='text-success mt-3 fs-6 fw-bold text-start ms-3 mb-1'>WHAT YOU WILL LEARN</h4>
+            <h4 className='text-success mt-3 fs-6 fw-bold text-start ms-3 mb-1'>WHAT YOU WILL LEARN FROM THIS COURSE</h4>
             <p className='d-none d-md-block text-start ms-3'><small>Total Credits : </small><span className='text-secondary fw-semibold fs-6'>{course.credits}</span></p>
 
             {/* features */}

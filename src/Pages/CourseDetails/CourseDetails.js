@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { FaBrain, FaCheck } from 'react-icons/fa';
+import { FaBrain } from 'react-icons/fa';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import './CourseDetails.css'
@@ -7,11 +7,13 @@ import { Col, Image, Row } from 'react-bootstrap';
 import Rating from '../shared/Rating/Rating';
 import Features from './Features';
 import CourseList from '../shared/CourseList/CourseList';
-import Quotes from '../shared/Quotes/Quotes';
+import ThisCourseInstructor from '../shared/ThisCourseInstructor/ThisCourseInstructor';
 
 const CourseDetails = () => {
     const { theme } = useContext(AuthContext);
     const course = useLoaderData();
+
+
 
     return (
         <Row className=''>
@@ -76,8 +78,8 @@ const CourseDetails = () => {
 
             {/* Right Side Bar */}
             <Col className='mb-5 rounded px-5'>
-                <CourseList></CourseList>
-                <Quotes></Quotes>
+                <ThisCourseInstructor course={course}></ThisCourseInstructor>
+                <CourseList className='mt-5'></CourseList>
             </Col>
         </Row >
 

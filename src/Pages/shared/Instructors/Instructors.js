@@ -4,6 +4,7 @@ import { Image } from 'react-bootstrap';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import { FaBrain } from 'react-icons/fa';
 
+
 const Instructors = () => {
 
     const { theme } = useContext(AuthContext);
@@ -21,7 +22,7 @@ const Instructors = () => {
             < h3 className={`mb-5 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}>Our Instructors</h3>
 
             {
-                instructors.map(instructor => <Link>
+                instructors.map(instructor => <Link to={`/instructor/${instructor.id}`}>
                     <div className='d-flex justify-content-between'>
                         <p> {instructor.name}</p>
                         <Image src={instructor.image} alt={instructor.name} height={'25px'} width={'25px'} rounded></Image>
