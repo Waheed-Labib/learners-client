@@ -8,7 +8,7 @@ const Rating = ({ rating }) => {
         for (let i = 0; i < rating; i++) {
             stars.push(<FaStar />);
         }
-        return <div className='text-warning fs-3'>{stars}</div>;
+        return <div className='text-warning'>{stars}</div>;
     }
 
 
@@ -19,7 +19,7 @@ const Rating = ({ rating }) => {
 
         stars.push(<FaStarHalfAlt></FaStarHalfAlt>)
 
-        return <div className='text-warning fs-3'>{stars}</div>
+        return <div className='text-warning'>{stars}</div>
     }
 }
 
