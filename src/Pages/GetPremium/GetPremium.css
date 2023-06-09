@@ -1,0 +1,7 @@
+.payment-option {
+    transition: 0.1s;
+}
+
+.payment-option:hover {
+    border: 2px solid darkblue;
+}

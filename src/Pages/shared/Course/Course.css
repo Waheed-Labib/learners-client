@@ -1,5 +1,16 @@
-.light-shadow {
+.course-card {
+    overflow: hidden;
+}
 
+.course-card img {
+    transition: 0.5s;
+}
+
+.course-card:hover img {
+    transform: scale(1.1);
+}
+
+.light-shadow {
     box-shadow: 10px 10px rgba(240, 248, 255, 0.101);
 }
 

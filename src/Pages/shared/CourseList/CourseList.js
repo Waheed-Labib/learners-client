@@ -21,7 +21,7 @@ const CourseList = () => {
 
             {
                 courses.map(course => <Link to={`/course-details/${course.id}`}>
-                    <div className='d-flex justify-content-between'>
+                    <div className='text-start'>
                         <p> {course.course_name}</p>
 
                     </div>

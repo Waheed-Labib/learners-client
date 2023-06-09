@@ -47,6 +47,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 setUser(user)
+                navigate(from, { replace: true })
                 // console.log(user)
             }).catch(error => setError(error.message))
     }
@@ -55,6 +56,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 setUser(user)
+                navigate(from, { replace: true })
             }).catch(error => setError(error.message))
     }
 
@@ -83,7 +85,7 @@ const Login = () => {
             <FaBrain className={`fs-1 mb-3 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}></FaBrain>
             {
                 success && user ?
-                    <h4 className='text-success mb-3'>Login Successful. Please verify your Email first. Then visit the site.</h4>
+                    <h4 className='text-success mb-3'>Login Successful. Have you verified your Email?</h4>
                     :
                     < h3 className={`mb-3 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}>Please Login</h3>
             }

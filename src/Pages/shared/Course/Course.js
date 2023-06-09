@@ -12,7 +12,7 @@ const Course = ({ course }) => {
     const { id, image, course_name, teachers, rating, credits, price } = course;
 
     return (
-        <Card className={`mx-auto my-5 ${theme === 'dark' ? 'bg-dark light-shadow border-light' : 'bg-light dark-shadow border-dark'}`}>
+        <Card className={`course-card mx-auto my-5 ${theme === 'dark' ? 'bg-dark light-shadow border-light' : 'bg-light dark-shadow border-dark'}`}>
             <Card.Img variant="top" src={image} height='200px' />
             <Card.Body className='text-start'>
                 <Card.Title>
@@ -51,7 +51,10 @@ const Course = ({ course }) => {
                         <button className={`${theme === 'dark' ? 'btn btn-outline-light' : 'btn btn-outline-dark'} me-2 p-2 rounded`}>View Details</button>
                     </Link>
 
-                    <button className='d-none d-sm-inline btn btn-outline-primary p-2 rounded fw-semibold'>Get Premium Access</button>
+                    <Link style={{ textDecoration: 'none' }} to={`/get-premium/${id}`}>
+                        <button className='d-none d-sm-inline btn btn-outline-primary p-2 rounded fw-semibold'>Get Premium Access</button>
+                    </Link>
+
                 </div>
 
             </Card.Body>

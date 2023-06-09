@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { FaBrain } from 'react-icons/fa';
-import { useLoaderData } from 'react-router-dom';
+import { FaBrain, FaFilePdf } from 'react-icons/fa';
+import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import './CourseDetails.css'
 import { Col, Image, Row } from 'react-bootstrap';
@@ -9,6 +9,7 @@ import Features from './Features';
 import CourseList from '../shared/CourseList/CourseList';
 import ThisCourseInstructor from '../shared/ThisCourseInstructor/ThisCourseInstructor';
 import PageNotFound from '../PageNotFound/PageNotFound';
+
 
 const CourseDetails = () => {
     const { theme } = useContext(AuthContext);
@@ -22,12 +23,31 @@ const CourseDetails = () => {
             {/* Show Course Details */}
             <Col xs={12} lg={9} className='my-5 px-5'>
 
-                {/* page header */}
+                {/* logo */}
+                <FaBrain className={`fs-1 mb-3 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}></FaBrain>
 
-                <FaBrain className={`text-start fs-1 mb-3 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}></FaBrain>
-                < h3 className={` mb-3 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}>
-                    {course.course_name} course
-                </h3>
+                {/* page header */}
+                <div className='d-flex flex-column flex-md-row justify-content-center align-items-center'>
+                    <div className=''>
+
+                        {/* course name */}
+
+                        < h3 className={`text-start mb-3 me-3 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}>
+                            {course.course_name} course
+                        </h3>
+
+                    </div>
+                    {/* download pdf */}
+
+                    <div className='mb-2'>
+                        <FaFilePdf className='fs-2 text-danger'></FaFilePdf>
+                        <small className='text-success'>DOWNLOAD PDF</small>
+                    </div>
+
+                </div>
+
+
+
 
                 {/* image */}
 
@@ -55,10 +75,13 @@ const CourseDetails = () => {
 
                     <Col xs={6} md={4} className='get-premium-btn d-flex'>
                         <div>
-                            <button className='btn btn-outline-primary p-1 px-2 rounded fw-semibold'>
-                                <p className='m-0'>Get Premium Access</p>
-                                <p className='m-0'><small>{course.price} ৳</small></p>
-                            </button>
+                            <Link to={`/get-premium/${course.id}`}>
+                                <button className='btn btn-outline-primary p-1 px-2 rounded fw-semibold'>
+                                    <p className='m-0'>Get Premium Access</p>
+                                    <p className='m-0'><small>{course.price} ৳</small></p>
+                                </button>
+                            </Link>
+
                         </div>
 
                     </Col>

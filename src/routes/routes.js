@@ -13,6 +13,7 @@ import CourseDetails from "../Pages/CourseDetails/CourseDetails";
 import Instructor from "../Pages/Instructor/Instructor";
 import PageNotFound from "../Pages/PageNotFound/PageNotFound";
 import ErrorBoundary from "../Pages/ErrorBoundary/ErrorBoundary";
+import GetPremium from "../Pages/GetPremium/GetPremium";
 
 export const routes = createBrowserRouter([
     {
@@ -64,6 +65,12 @@ export const routes = createBrowserRouter([
             {
                 path: '/course-details/:id',
                 element: <CourseDetails></CourseDetails>,
+                loader: ({ params }) => fetch(`https://learners-server-side.vercel.app/courses/${params.id}`),
+                errorElement: <ErrorBoundary></ErrorBoundary>
+            },
+            {
+                path: '/get-premium/:id',
+                element: <PrivateRoute><GetPremium></GetPremium></PrivateRoute>,
                 loader: ({ params }) => fetch(`https://learners-server-side.vercel.app/courses/${params.id}`),
                 errorElement: <ErrorBoundary></ErrorBoundary>
             },

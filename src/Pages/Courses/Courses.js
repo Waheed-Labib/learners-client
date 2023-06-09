@@ -14,9 +14,6 @@ const Courses = () => {
     const { theme } = useContext(AuthContext);
     const courses = useLoaderData();
 
-
-    // console.log(courses)
-
     return (
         <Row className=''>
             {/* Show Courses */}

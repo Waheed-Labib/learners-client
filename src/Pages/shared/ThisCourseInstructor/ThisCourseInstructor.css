@@ -1,0 +1,15 @@
+.this-instructor img {
+    transition: 0.5s;
+}
+
+.this-instructor:hover img {
+    transform: scale(1.1);
+}
+
+.this-instructor a {
+    text-decoration: none;
+}
+
+.this-instructor:hover a {
+    text-decoration: underline;
+}

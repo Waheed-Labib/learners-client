@@ -3,6 +3,7 @@ import { FaBrain } from 'react-icons/fa';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import { Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import './ThisCourseInstructor.css'
 
 const ThisCourseInstructor = ({ course }) => {
 
@@ -25,9 +26,9 @@ const ThisCourseInstructor = ({ course }) => {
             {
                 thisCourseInstructors.map(instructor =>
 
-                    <div className='mt-5'>
+                    <div className='this-instructor mt-5'>
                         <Image src={instructor.image} height={'100px'} width={'100px'} roundedCircle className='mb-2'></Image>
-                        <Link to={`/instructor/${instructor.id}`}><h5>{instructor.name}</h5></Link>
+                        <Link className='text-primary' to={`/instructor/${instructor.id}`}><h5>{instructor.name}</h5></Link>
                     </div>
                 )
             }
