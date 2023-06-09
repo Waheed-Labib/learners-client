@@ -11,6 +11,8 @@ import PrivateRoute from "./PrivateRoute";
 import VerifyReq from "../Pages/VerifyReq/VerifyReq";
 import CourseDetails from "../Pages/CourseDetails/CourseDetails";
 import Instructor from "../Pages/Instructor/Instructor";
+import PageNotFound from "../Pages/PageNotFound/PageNotFound";
+import ErrorBoundary from "../Pages/ErrorBoundary/ErrorBoundary";
 
 export const routes = createBrowserRouter([
     {
@@ -19,47 +21,61 @@ export const routes = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home></Home>
+                element: <Home></Home>,
+                errorElement: <ErrorBoundary></ErrorBoundary>
             },
             {
                 path: '/courses',
                 element: <Courses></Courses>,
-                loader: () => fetch('https://learners-server-side.vercel.app/courses')
+                loader: () => fetch('https://learners-server-side.vercel.app/courses'),
+                errorElement: <ErrorBoundary></ErrorBoundary>
 
             },
             {
                 path: '/faq',
-                element: <FAQ></FAQ>
+                element: <FAQ></FAQ>,
+                errorElement: <ErrorBoundary></ErrorBoundary>
             },
             {
                 path: '/blog',
-                element: <Blog></Blog>
+                element: <Blog></Blog>,
+                errorElement: <ErrorBoundary></ErrorBoundary>
             },
             {
                 path: '/user-info/:id',
-                element: <PrivateRoute><UserInfo></UserInfo></PrivateRoute>
+                element: <PrivateRoute><UserInfo></UserInfo></PrivateRoute>,
+                errorElement: <ErrorBoundary></ErrorBoundary>
             },
             {
                 path: '/login',
-                element: <Login></Login>
+                element: <Login></Login>,
+                errorElement: <ErrorBoundary></ErrorBoundary>
             },
             {
                 path: '/register',
-                element: <Register></Register>
+                element: <Register></Register>,
+                errorElement: <ErrorBoundary></ErrorBoundary>
             },
             {
                 path: '/verify-request',
-                element: <VerifyReq></VerifyReq>
+                element: <VerifyReq></VerifyReq>,
+                errorElement: <ErrorBoundary></ErrorBoundary>
             },
             {
                 path: '/course-details/:id',
                 element: <CourseDetails></CourseDetails>,
-                loader: ({ params }) => fetch(`https://learners-server-side.vercel.app/courses/${params.id}`)
+                loader: ({ params }) => fetch(`https://learners-server-side.vercel.app/courses/${params.id}`),
+                errorElement: <ErrorBoundary></ErrorBoundary>
             },
             {
                 path: '/instructor/:id',
                 element: <Instructor></Instructor>,
-                loader: ({ params }) => fetch(`https://learners-server-side.vercel.app/instructors/${params.id}`)
+                loader: ({ params }) => fetch(`https://learners-server-side.vercel.app/instructors/${params.id}`),
+                errorElement: <ErrorBoundary></ErrorBoundary>
+            },
+            {
+                path: '*',
+                element: <PageNotFound></PageNotFound>
             }
         ]
     }

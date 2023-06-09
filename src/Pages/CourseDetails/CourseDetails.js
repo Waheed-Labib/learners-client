@@ -8,12 +8,13 @@ import Rating from '../shared/Rating/Rating';
 import Features from './Features';
 import CourseList from '../shared/CourseList/CourseList';
 import ThisCourseInstructor from '../shared/ThisCourseInstructor/ThisCourseInstructor';
+import PageNotFound from '../PageNotFound/PageNotFound';
 
 const CourseDetails = () => {
     const { theme } = useContext(AuthContext);
     const course = useLoaderData();
 
-
+    if (!course) return <PageNotFound></PageNotFound>
 
     return (
         <Row className=''>

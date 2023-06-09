@@ -4,10 +4,13 @@ import CourseList from '../shared/CourseList/CourseList';
 import Instructors from '../shared/Instructors/Instructors';
 import InstructorInfo from '../shared/InstructorInfo/InstructorInfo';
 import { useLoaderData } from 'react-router-dom';
+import PageNotFound from '../PageNotFound/PageNotFound';
 
 const Instructor = () => {
 
     const instructor = useLoaderData();
+
+    if (!instructor) return <PageNotFound></PageNotFound>
 
     return (
         <Row className='px-5 pb-5'>
