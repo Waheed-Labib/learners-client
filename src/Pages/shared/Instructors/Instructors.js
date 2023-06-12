@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Image } from 'react-bootstrap';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import { FaBrain } from 'react-icons/fa';
-
+import './Insrtuctors.css'
 
 const Instructors = () => {
 
@@ -23,7 +23,7 @@ const Instructors = () => {
 
             {
                 instructors.map(instructor => <Link to={`/instructor/${instructor.id}`}>
-                    <div className='d-flex justify-content-between'>
+                    <div className='instructor-in-list d-flex justify-content-between'>
                         <p> {instructor.name}</p>
                         <Image src={instructor.image} alt={instructor.name} height={'25px'} width={'25px'} rounded></Image>
                     </div>

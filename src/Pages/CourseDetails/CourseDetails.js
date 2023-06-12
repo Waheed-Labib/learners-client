@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { FaBrain, FaFilePdf } from 'react-icons/fa';
+import { FaBrain, FaCheck, FaFilePdf } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import './CourseDetails.css'
@@ -9,11 +9,12 @@ import Features from './Features';
 import CourseList from '../shared/CourseList/CourseList';
 import ThisCourseInstructor from '../shared/ThisCourseInstructor/ThisCourseInstructor';
 import PageNotFound from '../PageNotFound/PageNotFound';
-
+import ReactToPdf from "react-to-pdf";
 
 const CourseDetails = () => {
     const { theme } = useContext(AuthContext);
     const course = useLoaderData();
+    const ref = React.createRef();
 
     if (!course) return <PageNotFound></PageNotFound>
 
@@ -22,6 +23,7 @@ const CourseDetails = () => {
 
             {/* Show Course Details */}
             <Col xs={12} lg={9} className='my-5 px-5'>
+
 
                 {/* logo */}
                 <FaBrain className={`fs-1 mb-3 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}></FaBrain>
@@ -39,20 +41,22 @@ const CourseDetails = () => {
                     </div>
                     {/* download pdf */}
 
-                    <div className='mb-2'>
-                        <FaFilePdf className='fs-2 text-danger'></FaFilePdf>
-                        <small className='text-success'>DOWNLOAD PDF</small>
-                    </div>
+                    <ReactToPdf targetRef={ref} filename={`course-details-${course.course_name}.pdf`} scale={0.9}>
+                        {({ toPdf }) => <button onClick={toPdf} className='btn btn-secondary p-1 mb-2 ms-2 rounded fw-semibold'>
+                            <FaFilePdf className='me-2'></FaFilePdf>
+                            <small className=''>DOWNLOAD PDF</small>
+                        </button>}
+                    </ReactToPdf>
 
                 </div>
 
+                {/* short description */}
 
-
+                <p className={`text-start mx-auto ${theme === 'dark' ? 'light-grey-text' : ''}`}>{course.short_description}</p>
 
                 {/* image */}
 
-                <p className={`text-start mx-auto ${theme === 'dark' ? 'light-grey-text' : ''}`}>{course.short_description}</p>
-                <Image src={course.image} rounded fluid></Image>
+                <Image className='' src={course.image} rounded fluid></Image>
 
                 {/* rating, purchase btn, etc */}
 
@@ -96,7 +100,30 @@ const CourseDetails = () => {
 
                 </Row>
 
-                <Features course={course}></Features>
+                {/* <Features course={course}></Features> */}
+
+                {/* Show Features */}
+
+                <div className='ps-1 pt-2 rounded mt-5 bg-success'>
+                    <h4 className='text-warning mt-3 fs-6 fw-bold text-start ms-3 mb-1'>WHAT YOU WILL LEARN FROM THIS COURSE</h4>
+                    <p className={`d-none d-md-block text-start ms-3 text-light`}><small>Total Credits : </small><span className='text-white fw-semibold fs-6'>{course.credits}</span></p>
+
+                    {/* features */}
+                    <Row ref={ref} className='p-2 ps-3 mt-2'>
+                        {
+                            course.features.map(feature =>
+
+                                <Col xs={12} md={6} className='d-flex'>
+                                    <FaCheck className='text-warning me-3'></FaCheck>
+                                    <p className={`text-start w-75 text-light`}>{feature}</p>
+                                </Col>
+                            )
+                        }
+                    </Row>
+
+                    <small className='bg-secondary text-light px-1 mb-3'>{course.course_name} course by learners</small>
+
+                </div>
 
             </Col>
 

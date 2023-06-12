@@ -1,0 +1,7 @@
+.instructor-in-list img {
+    transition: 0.2s;
+}
+
+.instructor-in-list:hover img {
+    transform: scale(1.5);
+}
