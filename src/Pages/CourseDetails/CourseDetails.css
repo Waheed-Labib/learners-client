@@ -34,3 +34,7 @@
         justify-content: start;
     }
 }
+
+.bg-green-yellow {
+    background-color: rgb(100, 157, 13);
+}

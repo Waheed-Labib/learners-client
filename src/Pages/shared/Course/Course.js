@@ -29,7 +29,7 @@ const Course = ({ course }) => {
                     } </small>
                 </Card.Title>
 
-                <div className='d-flex justify-content-between align-items-center mb-0 mt-4'>
+                <div className={`d-flex justify-content-between align-items-center mb-0 mt-4 ${theme === 'dark' ? 'text-white' : 'text-primary'}`}>
                     <p>
                         <FaStar className='text-warning'></FaStar>
                         <span> {rating}</span>

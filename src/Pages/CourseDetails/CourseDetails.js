@@ -104,24 +104,24 @@ const CourseDetails = () => {
 
                 {/* Show Features */}
 
-                <div className='ps-1 pt-2 rounded mt-5 bg-success'>
-                    <h4 className='text-warning mt-3 fs-6 fw-bold text-start ms-3 mb-1'>WHAT YOU WILL LEARN FROM THIS COURSE</h4>
-                    <p className={`d-none d-md-block text-start ms-3 text-light`}><small>Total Credits : </small><span className='text-white fw-semibold fs-6'>{course.credits}</span></p>
+                <div ref={ref} className={`px-1 pt-2 rounded mt-5 bg-green-yellow text-dark`}>
+                    <h4 className={`mt-3 fs-6 fw-bold text-start mx-3 mb-1`}>WHAT YOU WILL LEARN FROM THIS COURSE</h4>
+                    <p className={`d-none d-md-block text-start ms-3`}><small>Total Credits : </small><span className='fw-semibold fs-6'>{course.credits}</span></p>
 
                     {/* features */}
-                    <Row ref={ref} className='p-2 ps-3 mt-2'>
+                    <Row className='p-2 ps-3 mt-2'>
                         {
                             course.features.map(feature =>
 
                                 <Col xs={12} md={6} className='d-flex'>
-                                    <FaCheck className='text-warning me-3'></FaCheck>
-                                    <p className={`text-start w-75 text-light`}>{feature}</p>
+                                    <FaCheck className={`text-warning me-3`}></FaCheck>
+                                    <p className={`text-start w-75`}>{feature}</p>
                                 </Col>
                             )
                         }
                     </Row>
 
-                    <small className='bg-secondary text-light px-1 mb-3'>{course.course_name} course by learners</small>
+                    <small className='bg-dark text-secondary px-1 mb-5'>{course.course_name} course by learners</small>
 
                 </div>
 

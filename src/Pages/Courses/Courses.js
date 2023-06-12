@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Course from '../shared/Course/Course';
 import { FaBrain } from 'react-icons/fa';
 import { AuthContext } from '../../contexts/AuthProvider';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { Col, Row } from 'react-bootstrap';
 import './Courses.css'
 import Quotes from '../shared/Quotes/Quotes';
@@ -24,7 +24,7 @@ const Courses = () => {
                     {
                         courses.map(course =>
                             <Col xs={12} md={6}>
-                                <Course key={course.id} course={course}></Course>
+                                <Link style={{ textDecoration: 'none' }} to={`/course-details/${course.id}`}><Course key={course.id} course={course}></Course></Link>
                             </Col>
 
                         )
