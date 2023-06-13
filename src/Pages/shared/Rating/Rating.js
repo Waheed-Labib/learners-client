@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
+import { FaRegStar, FaStar, FaStarHalfAlt } from 'react-icons/fa';
 
 const Rating = ({ rating }) => {
     const stars = [];
@@ -7,6 +7,9 @@ const Rating = ({ rating }) => {
     if ([1, 2, 3, 4, 5].includes(rating)) {
         for (let i = 0; i < rating; i++) {
             stars.push(<FaStar />);
+        }
+        for (let j = 0; j < (5 - rating); j++) {
+            stars.push(<FaRegStar></FaRegStar>)
         }
         return <div className='text-warning'>{stars}</div>;
     }
@@ -19,6 +22,9 @@ const Rating = ({ rating }) => {
 
         stars.push(<FaStarHalfAlt></FaStarHalfAlt>)
 
+        for (let j = 0; j < (4 - rating); j++) {
+            stars.push(<FaRegStar></FaRegStar>)
+        }
         return <div className='text-warning'>{stars}</div>
     }
 }

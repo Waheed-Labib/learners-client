@@ -60,7 +60,7 @@ const Header = () => {
                         <hr className='lightblue'></hr>
                         <Link to='/faq' className='me-3'>FAQ</Link>
                         <hr className='lightblue'></hr>
-                        <Link to='/blog' className='me-3'>Blog</Link>
+                        <Link to='/blogs' className='me-3'>Blogs</Link>
                         <hr className='lightblue'></hr>
                     </Nav>
                     <Nav>

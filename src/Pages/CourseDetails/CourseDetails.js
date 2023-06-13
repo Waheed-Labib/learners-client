@@ -104,7 +104,7 @@ const CourseDetails = () => {
 
                 {/* Show Features */}
 
-                <div ref={ref} className={`px-1 pt-2 rounded mt-5 bg-green-yellow text-dark`}>
+                <div ref={ref} className={`px-1 pt-2 rounded mt-5 bg-green-yellow text-black`}>
                     <h4 className={`mt-3 fs-6 fw-bold text-start mx-3 mb-1`}>WHAT YOU WILL LEARN FROM THIS COURSE</h4>
                     <p className={`d-none d-md-block text-start ms-3`}><small>Total Credits : </small><span className='fw-semibold fs-6'>{course.credits}</span></p>
 
@@ -121,7 +121,7 @@ const CourseDetails = () => {
                         }
                     </Row>
 
-                    <small className='bg-dark text-secondary px-1 mb-5'>{course.course_name} course by learners</small>
+                    <small className='bg-black text-secondary px-1 mb-5'>{course.course_name} course by learners</small>
 
                 </div>
 

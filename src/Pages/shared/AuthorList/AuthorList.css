@@ -1,0 +1,12 @@
+.author-on-side img,
+.author-on-side h5 {
+    transition: 0.5s;
+}
+
+.author-on-side:hover img {
+    transform: scale(1.1);
+}
+
+.author-on-side:hover h5 {
+    text-decoration: underline;
+}

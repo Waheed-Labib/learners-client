@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import Blog from "../Pages/Blog/Blog";
 import Courses from "../Pages/Courses/Courses";
 import FAQ from "../Pages/FAQ/FAQ";
 import Home from "../Pages/Home/Home";
@@ -14,6 +13,9 @@ import Instructor from "../Pages/Instructor/Instructor";
 import PageNotFound from "../Pages/PageNotFound/PageNotFound";
 import ErrorBoundary from "../Pages/ErrorBoundary/ErrorBoundary";
 import GetPremium from "../Pages/GetPremium/GetPremium";
+import Blogs from "../Pages/Blogs/Blogs";
+import BlogPost from "../Pages/BlogPost/BlogPost";
+import Author from "../Pages/Author/Author";
 
 export const routes = createBrowserRouter([
     {
@@ -38,8 +40,15 @@ export const routes = createBrowserRouter([
                 errorElement: <ErrorBoundary></ErrorBoundary>
             },
             {
-                path: '/blog',
-                element: <Blog></Blog>,
+                path: '/blogs',
+                element: <Blogs></Blogs>,
+                loader: () => fetch('https://learners-server-side.vercel.app/blogs'),
+                errorElement: <ErrorBoundary></ErrorBoundary>
+            },
+            {
+                path: '/blog-post/:id',
+                element: <BlogPost></BlogPost>,
+                loader: ({ params }) => fetch(`https://learners-server-side.vercel.app/blogs/${params.id}`),
                 errorElement: <ErrorBoundary></ErrorBoundary>
             },
             {
@@ -78,6 +87,12 @@ export const routes = createBrowserRouter([
                 path: '/instructor/:id',
                 element: <Instructor></Instructor>,
                 loader: ({ params }) => fetch(`https://learners-server-side.vercel.app/instructors/${params.id}`),
+                errorElement: <ErrorBoundary></ErrorBoundary>
+            },
+            {
+                path: '/authors/:id',
+                element: <Author></Author>,
+                loader: ({ params }) => fetch(`https://learners-server-side.vercel.app/authors/${params.id}`),
                 errorElement: <ErrorBoundary></ErrorBoundary>
             },
             {
