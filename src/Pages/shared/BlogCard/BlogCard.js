@@ -9,7 +9,7 @@ const BlogCard = ({ blog }) => {
     const { theme } = useContext(AuthContext);
     const { date, id, heading, author, author_id, author_image, post_image, body, rating } = blog;
     return (
-        <Card className={`p-3 mx-auto my-5 ${theme === 'dark' ? 'bg-dark light-shadow border-light' : 'bg-light dark-shadow border-dark'}`}>
+        <Card className={`p-3 mx-auto mb-5 ${theme === 'dark' ? 'bg-dark light-shadow border-light' : 'bg-light dark-shadow border-dark'}`}>
             <small className={`text-start mb-2 ${theme === 'dark' ? 'text-light' : 'text-dark'}`}>Posted on : {date}</small>
             <Card.Img className='bg-light' variant="top" src={post_image} height='200px' />
             <Card.Body className='text-start'>

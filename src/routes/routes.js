@@ -21,6 +21,7 @@ export const routes = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <ErrorBoundary></ErrorBoundary>,
         children: [
             {
                 path: '/',

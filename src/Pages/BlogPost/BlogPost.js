@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { Link, useLoaderData } from 'react-router-dom';
 import { Card, Col, Image, Row } from 'react-bootstrap';
 import Rating from '../shared/Rating/Rating';
-import { FaArrowRight } from 'react-icons/fa';
+import { FaArrowRight, FaBrain } from 'react-icons/fa';
 import PageNotFound from '../PageNotFound/PageNotFound';
 
 const BlogPost = () => {
@@ -60,7 +60,19 @@ const BlogPost = () => {
                 </Col>
 
                 <Col xs={12} md={4}>
+                    <div className='my-5'>
+                        <FaBrain className={`fs-1 mb-3 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}></FaBrain>
+                        < h3 className={` mb-5 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}>Visit Author</h3>
 
+
+
+                        < Link style={{ textDecoration: 'none' }} to={`/authors/${author_id}`} className='author-on-side text-primary mt-5'>
+                            <Image src={author_image} height={'100px'} width={'100px'} roundedCircle className='mb-2'></Image>
+                            <h5>{author}</h5></Link>
+
+
+
+                    </div >
                 </Col>
             </Row>
 

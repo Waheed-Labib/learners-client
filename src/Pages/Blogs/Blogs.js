@@ -11,9 +11,9 @@ const Blogs = () => {
     const blogs = useLoaderData();
 
     return (
-        <Row className='p-5'>
+        <Row className='px-5 pb-5'>
             {/* Show Blogs */}
-            <Col xs={12} md={9} lg={8}>
+            <Col className='mt-5' xs={12} md={9} lg={8}>
                 <FaBrain className={`fs-1 mb-3 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}></FaBrain>
                 < h3 className={`mb-3 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}>Blogs</h3>
                 <div>

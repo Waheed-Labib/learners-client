@@ -3,7 +3,7 @@ import { useRouteError } from 'react-router-dom';
 
 const ErrorBoundary = () => {
     const error = useRouteError();
-    console.error(error.message);
+    // console.error(error.message);
 
     return (
         <div style={{ height: "70vh" }} className='d-flex align-items-center justify-content-center'>

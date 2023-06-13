@@ -17,7 +17,7 @@ const AuthorList = () => {
     }, [])
 
     return (
-        <div className='mb-5'>
+        <div className='my-5'>
             <FaBrain className={`fs-1 mb-3 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}></FaBrain>
             < h3 className={` mb-5 ${theme === 'dark' ? 'text-white' : 'primary-color'}`}>Our Authors</h3>
 

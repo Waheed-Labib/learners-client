@@ -12,7 +12,7 @@ const Course = ({ course }) => {
     const { id, image, course_name, teachers, rating, credits, price } = course;
 
     return (
-        <Card className={`course-card mx-auto my-5 ${theme === 'dark' ? 'bg-dark light-shadow border-light' : 'bg-light dark-shadow border-dark'}`}>
+        <Card className={`course-card mx-auto mb-5 ${theme === 'dark' ? 'bg-dark light-shadow border-light' : 'bg-light dark-shadow border-dark'}`}>
             <Card.Img variant="top" src={image} height='200px' />
             <Card.Body className='text-start'>
                 <Card.Title>
