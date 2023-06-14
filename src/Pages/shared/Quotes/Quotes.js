@@ -4,7 +4,7 @@ import useDataKey from '../../../hooks/useDataKey';
 
 const Quotes = () => {
 
-    const quotes = useDataKey('quotes');
+    const quotes = useDataKey('quotations');
 
     return (
         <div className='mt-5'>
