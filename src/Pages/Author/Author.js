@@ -4,6 +4,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { Col, Image, Row } from 'react-bootstrap';
 import { AuthContext } from '../../contexts/AuthProvider';
 import BlogCard from '../shared/BlogCard/BlogCard';
+import useDataKey from '../../hooks/useDataKey';
 
 const Author = () => {
 
@@ -12,12 +13,7 @@ const Author = () => {
     const author = useLoaderData();
     const { name, id, image, designation, institute } = author;
 
-    const [blogs, setBlogs] = useState([]);
-    useEffect(() => {
-        fetch('https://learners-server-side.vercel.app/blogs')
-            .then(res => res.json())
-            .then(data => setBlogs(data))
-    }, [])
+    const blogs = useDataKey('blogs');
 
     const thisAuthorsBlogs = blogs.filter(blog => blog.author_id === id);
 

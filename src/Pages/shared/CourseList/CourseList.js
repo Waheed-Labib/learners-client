@@ -3,16 +3,12 @@ import { Link } from 'react-router-dom';
 import { Image } from 'react-bootstrap';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import { FaBrain } from 'react-icons/fa';
+import useDataKey from '../../../hooks/useDataKey';
 
 const CourseList = () => {
     const { theme } = useContext(AuthContext);
 
-    const [courses, setCourses] = useState([]);
-    useEffect(() => {
-        fetch('https://learners-server-side.vercel.app/courses')
-            .then(res => res.json())
-            .then(data => setCourses(data))
-    }, [])
+    const courses = useDataKey('courses');
 
     return (
         <div>

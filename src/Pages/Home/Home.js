@@ -11,6 +11,7 @@ import BlogCard from '../shared/BlogCard/BlogCard';
 import FAQBody from '../shared/FAQBody/FAQBody';
 import './Home.css'
 import Slider from '../shared/Slider/Slider';
+import useDataKey from '../../hooks/useDataKey';
 
 
 const Home = () => {
@@ -18,22 +19,10 @@ const Home = () => {
     const { theme } = useContext(AuthContext);
 
     // fetching courses data
-    const [courses, setCourses] = useState([]);
-    useEffect(() => {
-        fetch('https://learners-server-side.vercel.app/courses')
-            .then(res => res.json())
-            .then(data => setCourses(data))
-
-    }, [])
+    const courses = useDataKey('courses');
 
     // fetching blogs data
-    const [blogs, setBlogs] = useState([]);
-    useEffect(() => {
-        fetch('https://learners-server-side.vercel.app/blogs')
-            .then(res => res.json())
-            .then(data => setBlogs(data))
-
-    }, [])
+    const blogs = useDataKey('blogs');
 
     return (
         <Row className='px-3 pb-5'>

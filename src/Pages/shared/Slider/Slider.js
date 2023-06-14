@@ -11,14 +11,7 @@ const Slider = () => {
 
     return (
         <Carousel className='mt-5 slider' activeIndex={index} onSelect={handleSelect}>
-            <Carousel.Item>
-                <img
-                    className="d-block w-100"
-                    src="https://www.learncomputerscienceonline.com/wp-content/uploads/2019/06/Data-Structures-And-Algorithms.jpg"
-                    alt="First slide"
-                />
 
-            </Carousel.Item>
             <Carousel.Item>
                 <img
                     className="d-block w-100"
@@ -28,13 +21,25 @@ const Slider = () => {
 
 
             </Carousel.Item>
+
+            <Carousel.Item>
+                <img
+                    className="d-block w-100"
+                    src="https://theyuvas.com/wp-content/uploads/2021/08/Data-Structures-and-Algorithm.png"
+                    alt="First slide"
+                />
+
+            </Carousel.Item>
+
             <Carousel.Item>
                 <img
                     className="d-block w-100"
                     src="https://wallpapercave.com/wp/wp3929768.jpg"
                     alt="Third slide"
                 />
-
+                <Carousel.Caption>
+                    <h3>Cloud Computing</h3>
+                </Carousel.Caption>
 
             </Carousel.Item>
             <Carousel.Item>

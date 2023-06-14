@@ -4,17 +4,13 @@ import { Image } from 'react-bootstrap';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import { FaBrain } from 'react-icons/fa';
 import './AuthorList.css'
+import useDataKey from '../../../hooks/useDataKey';
 
 const AuthorList = () => {
 
     const { theme } = useContext(AuthContext);
 
-    const [authors, setAuthors] = useState([]);
-    useEffect(() => {
-        fetch('https://learners-server-side.vercel.app/authors')
-            .then(res => res.json())
-            .then(data => setAuthors(data))
-    }, [])
+    const authors = useDataKey('authors');
 
     return (
         <div className='my-5'>

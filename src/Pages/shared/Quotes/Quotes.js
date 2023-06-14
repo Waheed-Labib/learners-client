@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Image } from 'react-bootstrap';
+import useDataKey from '../../../hooks/useDataKey';
 
 const Quotes = () => {
 
-    const [quotes, setQuotes] = useState([])
-
-    useEffect(() => {
-        fetch('https://learners-server-side.vercel.app/quotations')
-            .then(res => res.json())
-            .then(data => setQuotes(data))
-    }, [])
+    const quotes = useDataKey('quotes');
 
     return (
         <div className='mt-5'>
