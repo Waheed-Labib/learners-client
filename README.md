@@ -1,8 +1,9 @@
-Website Name : Learners.
+<h1>Website Name : Learners.</h1>
+<b>An Eduactional Web Platform built by REACT.</b>
 
-Live Website Link : https://learners-68f24.web.app/
+<h3>Live Website Link</h3>https://learners-68f24.web.app/
 
-This is a React App for an educational website. These are the some features of it :
+<h3>Features</h3>
 
 1. A courses page, where all the courses are shown in card.
 2. By clicking on the card, you can go to the course details.
@@ -13,7 +14,7 @@ This is a React App for an educational website. These are the some features of i
 7. There is a blogs page, with the authors information. By clicking on the blog card, you can visit the full blog. By clicking on the author's name, you will be re-directed to the author's profile.
 8. There is a FAQ page also.
 
-Technologies used : React JS, JSX, Bootstrap CSS, Vanilla CSS, various React Packages, Firebase Authentication.
+<h3>Technologies used</h3> : React JS, JSX, Bootstrap CSS, Vanilla CSS, various React Packages, Firebase Authentication.
 
 ![jsx](https://github.com/Waheed-Labib/learners-client-side/assets/108469789/a1012fa5-eef4-4404-a103-b94578ea40e7)
 ![CSS3-logo-vector-400x400](https://github.com/Waheed-Labib/learners-client-side/assets/108469789/3e03a007-fd15-4d47-b8dd-15bbea17663d)
@@ -23,4 +24,4 @@ Technologies used : React JS, JSX, Bootstrap CSS, Vanilla CSS, various React Pac
 ![EXpress-Js-590x430 (1)](https://github.com/Waheed-Labib/learners-client-side/assets/108469789/5faf63e9-715e-4129-b0b1-24dde587c9e2)
 ![firebase](https://github.com/Waheed-Labib/learners-client-side/assets/108469789/5371eda0-9d05-475d-94bb-e9dcf5d87e27)
 
-Server Side Code : https://github.com/Waheed-Labib/learners-server-side
+<h3>Server Side Code</h3>https://github.com/Waheed-Labib/learners-server-side
