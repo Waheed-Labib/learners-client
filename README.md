@@ -4,6 +4,8 @@
 <h1>Live Website Link</h1>https://learners-68f24.web.app/
 
 <h1>Features</h1>
+
+<ol>
 <Li><b>Light Mode, Dark Mode</b> Toggle</Li>
 <Li>A courses page, where all the courses are shown in card.</Li>
 <Li>By clicking on the card, you can go to the course details.</Li>
@@ -13,6 +15,8 @@
 <Li>After registration by Email-Password, one has to <b>verify his/her email</b>. There is a <b>reset password</b> option in the login page.</Li>
 <Li>There is a blogs page, with the authors information. By clicking on the blog card, you can visit the full blog. By clicking on the author's name, you will be re-directed to the author's profile.</Li>
 <Li>There is a FAQ page also.</Li>
+</ol>
+
 
 <h1>Technologies used</h1>React JS, JSX, Bootstrap CSS, Vanilla CSS, various React Packages, Firebase Authentication.
 
